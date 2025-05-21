@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
-import Nav from "../components/Nav";
 import Hero from '../components/Hero';
 import HomeGallery from '../components/HomeGallery';
 import Review from '../components/Review';
@@ -23,7 +22,7 @@ const HomePage = () => {
                 history('/login');
             }
         }
-    }, [])
+    }, [history])
 
     return (
         <div>

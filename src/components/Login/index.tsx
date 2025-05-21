@@ -10,8 +10,8 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function submit(e: any) {
-        e.prevent.default();
+    async function submit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
 
         try {
             await axios.post("http://localhost:5173", {
@@ -42,7 +42,7 @@ const Login = () => {
                     <input type="email" id="email" name="email" onChange={(e) => {setEmail(e.target.value)}} className="border border-black border-solid rounded px-2 w-40" />
                     <label htmlFor="password">Password</label>
                     <input type="password" id="password" name="password" onChange={(e) => {setPassword(e.target.value)}} className="border border-black border-solid rounded px-2 w-40" />
-                    <input type="submit" value="Submit" onClick={submit} className="my-4 px-8 py-2 rounded-md text-lg bg-green-800 mx-auto hover:opacity-90 duration-200" />
+                    <input type="submit" value="Submit" onClick={() => submit} className="my-4 px-8 py-2 rounded-md text-lg bg-green-800 mx-auto hover:opacity-90 duration-200" />
                     <p>Don't have na account? <Link to="/register" className="text-blue-800">Register now</Link></p>
                 </form>
             </div>

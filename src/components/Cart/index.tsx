@@ -155,19 +155,19 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
     }
 
     return (
-        <div>
-            <div className="xl:p-10 relative top-24 bg-[#D0D0D0] flex flex-col xl:flex-row justify-around z-10 mb-24 py-32 px-10">
-                <div className="xl:w-[65%] bg-white rounded-md h-fit">
-                    <div className="flex flex-row justify-between items-center h-20 px-16">
-                        <h1 className="text-2xl font-medium">Shopping cart</h1>
-                        <h1 className="text-xl font-medium">{localStorageItems.length} items</h1>
+        <div className="flex flex-col justify-between min-h-[89.8vh] relative top-0 bg-[#D0D0D0]">
+            {localStorageItems.length > 0 ?
+            (
+            <div className="xl:p-10 relative top-24 bg-[#D0D0D0] flex flex-col xl:flex-row justify-around z-10 mb-24 py-32 px-10 min-h-[90vh] h-fit">
+                <div className="xl:w-[65%] bg-white rounded-md">
+                    <div className="flex flex-row justify-between items-center h-20 sm:px-16 px-4">
+                        <h1 className="sm:text-2xl text-lg font-medium">Shopping cart</h1>
+                        <h1 className="sm:text-xl text-base font-medium">{localStorageItems.length} items</h1>
                     </div>
                     <hr className="mx-16"/>
 
-                    <ul className="my-10 sm:mx-16 mx-6">
-                        {localStorageItems.length > 0 ?
-                        
-                        localStorageItems.map((item, index) => (
+                    <ul className="my-10 sm:mx-16 mx-2">
+                        {localStorageItems.map((item, index) => (
                         <li key={index}>
                             {/* tablet and pc */}
                             <div className="hidden md:flex flex-col md:flex-row my-10">
@@ -196,19 +196,19 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
 
 
                             <div className="md:hidden flex flex-col md:flex-row my-10">
-                                <div className="flex">
-                                    <img src={item.value.img} className="w-48 h-56 rounded-md aspect-square"/>
+                                <div className="flex flex-col sm:flex-row">
+                                    <img src={item.value.img} className="w-32 sm:w-48 h-32 sm:h-56 sm:mx-6 ml-4 rounded-md aspect-square"/>
                                     <div className="sm:px-6 pl-4">
                                         <div className="flex justify-between items-center h-fit">
                                             <h1 className="text-2xl text-medium text-black"><strong>{item.key}</strong></h1>
                                             <h1 className="text-xl font-medium text-right">€{item.value.izracunataCijena}</h1>
                                         </div>
-                                        <p className="lg:text-base sm:text-sm text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius nunc eu ex fermentum, vel lacinia sapien sodales. Maecenas blandit tortor mi, ac pellentesque lectus bibendum in. Sed ac urna justo. Donec rutrum tellus non velit maximus accumsan. Phasellus sed nisl quis mi tincidunt finibus.</p>
+                                        <p className="lg:text-base sm:text-sm text-xs max-h-[195px] overflow-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius nunc eu ex fermentum, vel lacinia sapien sodales. Maecenas blandit tortor mi, ac pellentesque lectus bibendum in. Sed ac urna justo. Donec rutrum tellus non velit maximus accumsan. Phasellus sed nisl quis mi tincidunt finibus.</p>
                                     </div>
                                 </div>
                                 
-                                <div className="flex flex-row justify-between w-full items-center">
-                                    <div className="flex flex-col xl:my-0 lg:px-6 px-2 justify-between">
+                                <div className="flex sm:flex-row flex-col justify-between w-full my-4 mx-4">
+                                    <div className="flex flex-col xl:my-0 lg:px-6 justify-between">
                                         <div className="flex flex-row w-fit">
                                             <p>€{item.value.cijena}/kg</p>
                                             <div className="mx-5 flex flex-row rounded-xl bg-[#F9F6EE] border-[#d0d0d0] border-2">
@@ -219,19 +219,14 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                                         </div>
                                     </div>
                                     <div className="flex flex-col justify-between">
-                                        <button className="flex py-6"  onClick={() => deleteFn(item.key)}><svg xmlns="http://www.w3.org/2000/svg" width="20" className="mx-2" viewBox="0 0 448 512"><path fill="#404040" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>Delete</button>
+                                        <button className="flex py-6"  onClick={() => deleteFn(item.key)}><svg xmlns="http://www.w3.org/2000/svg" width="20" className="mr-2" viewBox="0 0 448 512"><path fill="#404040" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>Delete</button>
                                     </div>
                                 </div>
                             </div>
                             
                             <hr/>
                         </li>
-                        )) : (
-                            <div>
-                                <h1 className="text-lg">There are no items to display, first add some items to cart.</h1>
-                                <li className="px-8 py-2 bg-green-600 rounded-lg my-4 w-fit text-lg text-white font-medium"><Link to="/produkti" >Idi na produkte</Link></li>
-                            </div>
-                        )}
+                        ))}
                     </ul>
                     <div className="xl:hidden flex flex-col px-10">
                         <h1 className="xl:block text-2xl font-medium my-2">Delivery</h1>
@@ -244,10 +239,11 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                         <div className="my-2">
                             <h3 className="text-2xl font-medium">Pick-up</h3>
                             <p className="w-64 text-sm font-normal">You can also pick up your items at the location: Kujnik 21</p>
-                            <input type="checkbox" name="pick-up-box" /> I would like to pick-up
+                            <label><input type="checkbox" name="pick-up-box" /> I would like to pick-up</label>
                         </div>
                         <div className="flex flex-col w-full my-4">
                             <table width="100%">
+                                <tbody>
                                 <tr className="flex flex-row justify-between">
                                     <td className="text-lg font-medium">Subtotal</td>
                                     <td className="text-lg font-medium">€{localStorage.length != 0 ? getSubtotal() : '0'}</td>
@@ -260,6 +256,8 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                                     <td className="text-sm">Shipping</td>
                                     <td className="text-sm">{activeButton == "standard" && localStorage.length != 0 ? '€4.99' : activeButton == "express" && localStorage.length != 0 ? '€9.99' : '€0'}</td>
                                 </tr>
+                                </tbody>
+                                
                             </table>
                             <hr className="my-4"/>
                             <div className="flex flex-row justify-between">
@@ -267,8 +265,8 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                                 <h2 className="text-lg font-medium">€{localStorage.length != 0 ? getTotalPrice(getSubtotal(), getPdv(getSubtotal()), activeButton) : '0'}</h2>
                             </div>
                         </div>
-                        <div className="flex gap-4 w-[100%] py-6 xl:w-full">
-                            <button className="bg-green-700 rounded-xl w-full relative text-white text-lg font-medium py-2">Proceed to check out</button>
+                        <div className="flex flex-col sm:flex-row gap-4 w-[100%] py-6 xl:w-full">
+                            <Link to="/checkout" className="bg-green-700 rounded-xl w-full relative text-white text-lg font-medium py-2 text-center">Proceed to check out</Link>
                             <button className="border-1 border-black bg-[#b3b1ae] rounded-xl w-full relative text-[#2e2e2d] text-lg font-medium py-2">Continue shopping</button>
                         </div>
                     </div>
@@ -301,13 +299,14 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                         <div className="my-2">
                             <h3 className="text-2xl font-medium">Pick-up</h3>
                             <p className="w-64 text-sm font-normal">You can also pick up your items at the location: Kujnik 21</p>
-                            <input type="checkbox" name="pick-up-box" /> I would like to pick-up
+                            <label><input type="checkbox" name="pick-up-box" /> I would like to pick-up</label>
                         </div>
                         
 
                         <hr />
                         <div className="flex flex-col w-full my-4">
                             <table width="100%">
+                                <tbody>
                                 <tr className="flex flex-row justify-between">
                                     <td className="text-lg font-medium">Subtotal</td>
                                     <td className="text-lg font-medium">€{localStorage.length != 0 ? getSubtotal() : '0'}</td>
@@ -320,6 +319,8 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                                     <td className="text-sm">Shipping</td>
                                     <td className="text-sm">{activeButton == "standard" && localStorage.length != 0 ? '€4.99' : activeButton == "express" && localStorage.length != 0 ? '€9.99' : '€0'}</td>
                                 </tr>
+                                </tbody>
+                                
                             </table>
                             <hr className="my-4"/>
                             <div className="flex flex-row justify-between">
@@ -328,13 +329,26 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
                             </div>
                         </div>
                         <div className="flex flex-col gap-4 w-[50%] py-6 xl:w-full ">
-                            <button className="bg-green-700 rounded-xl w-full relative text-white text-lg font-medium py-2">Proceed to check out</button>
-                            <button className="border-1 border-black bg-[#b3b1ae] rounded-xl w-full relative text-[#2e2e2d] text-lg font-medium py-2">Continue shopping</button>
+                            <Link to="/checkout" className="bg-green-700 rounded-xl w-full relative text-white text-lg font-medium py-2 text-center">Proceed to check out</Link>
+                            <Link to="/produkti" className="border-1 border-black bg-[#b3b1ae] rounded-xl w-full relative text-[#2e2e2d] text-lg font-medium py-2 text-center">Continue shopping</Link>
                         </div>
                     </div>
                 </div>
             </div>
-            <Footer />
+            ) :
+
+            (
+                <div className="h-[83vh] bg-[#D0D0D0] flex flex-col xl:flex-row z-10 justify-center items-center">
+                    <div className="flex flex-col gap-4">
+                        <h1 className="text-lg">There are no items to display, first add some items to cart.</h1>
+                        <Link to="/produkti" className="px-8 py-2 bg-green-600 rounded-lg w-fit text-lg text-white font-medium hover:cursor-pointer">Idi na produkte</Link>
+                    </div>
+                </div>
+                
+            )}
+            <div className="">
+                <Footer />
+            </div>
         </div>
             
     );

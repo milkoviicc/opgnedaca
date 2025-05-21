@@ -1,8 +1,7 @@
-import React from "react";
 
 const Contact = () => {
     return (
-        <div className="container mx-auto flex justify-center py-40" id="kontakt">
+        <div className="container md:mx-auto flex justify-center py-40 px-10" id="kontakt">
             <div className="grid md:grid-cols-2 grid-cols-1">
                 <div>
                    <h2 className="font-medium text-2xl">Kontaktirajte OPG Nedaća</h2> 
@@ -26,12 +25,12 @@ const Contact = () => {
                         </div>
                         <div className="flex flex-col my-4">
                             <label htmlFor="text">Message</label>
-                            <textarea name="text" cols="60" rows="5" className="border border-black border-solid rounded px-2"></textarea>
+                            <textarea name="text" cols={60} rows={5} className="border border-black border-solid rounded px-2"></textarea>
                         </div>
                         <div className="grid grid-cols-2 my-4 items-stretch justify-end">
                             <p className="lg:text-base text-sm px-0 md:w-full w-[120%]">This site is protected by reCAPTCHA and the Google <b>Privacy Policy</b> and <b>Terms of Service</b> apply.</p>
                             <div className="flex justify-end w-full">
-                                <button type="submit" className="lg:px-4 lg:py-3 rounded-md w-40 sm:h-full bg-green-800 hover:opacity-80 duration-200 text-white text-xl font-medium">Send</button>
+                                <button type="submit" className="md:px-3 md:py-3 rounded-md sm:h-full w-32 bg-green-800 hover:opacity-80 duration-200 text-white text-xl font-medium">Send</button>
                             </div>
                         </div>
                     </form>

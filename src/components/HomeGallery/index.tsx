@@ -1,4 +1,3 @@
-import React from "react";
 
 import {Link} from 'react-router-dom';
 
@@ -36,7 +35,7 @@ const HomeGallery = () => {
         <div className="container mx-auto py-8 flex flex-col justify-center items-center" id="galerija">
             <div className="my-4 grid md:grid-cols-3 md:gap-4 grid-cols-1 gap-4 items-center">
                 {objects.map((obj, index) => (
-                    <img src={obj.img} key={index} className="md:w-[475px] md:h-[300px] sm:w-[400px] sm:h-[200px] w-[300px] h-[200px] object-cover hover:opacity-70 duration-200" />
+                    <img src={obj.img} key={index} className="md:w-[475px] md:h-[300px] sm:w-[400px] sm:h-[200px] w-[300px] h-[200px] object-cover hover:opacity-70 duration-200 rounded" />
                 ))}
             </div>
             <Link to="/gallery" className="px-4 py-3 rounded-md text-lg bg-green-800 mx-auto hover:opacity-90 duration-200">Pogledaj sve</Link>

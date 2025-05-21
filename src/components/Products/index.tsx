@@ -1,4 +1,3 @@
-import React, {useState} from "react";
 
 import aronija from '../../assets/image6.jpg';
 import jabuka from '../../assets/image1.jpg';
@@ -32,9 +31,9 @@ const produkti = [
 
 
 
-const Products = ({refreshStorage}: {refreshStorage: Function}) => {
+const Products = ({refreshStorage}: {refreshStorage: () => void}) => {
 
-    const dodajProdukt = (ime: string, product: boolean) => {
+    const dodajProdukt = (ime: string) => {
         produkti.map(obj => {
             if(obj.ime == ime) {
                 localStorage.setItem(ime, JSON.stringify(obj));
@@ -43,7 +42,7 @@ const Products = ({refreshStorage}: {refreshStorage: Function}) => {
         })
     }
 
-    const izbrisiProdukt = (ime: string, product: boolean) => {
+    const izbrisiProdukt = (ime: string) => {
         produkti.map(obj => {
             if(obj.ime == ime) {
                 localStorage.removeItem(ime);
@@ -52,8 +51,8 @@ const Products = ({refreshStorage}: {refreshStorage: Function}) => {
         })
     }
     return (
-        <div className="bg-[rgb(243,244,246)] w-[100vw] h-[89.7vh] flex justify-center">
-            <div className="container mx-auto grid grid-cols-3 items-center">
+        <div className="bg-[rgb(243,244,246)] w-[100vw] min-h-[100vh] h-[100%] flex justify-center py-32">
+            <div className="mx-auto grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 xl:gap-12 place-items-center">
                 {produkti.map((produkt, index) => (
                     <Produkt key={index} ime={produkt.ime} cijena={produkt.cijena} slika={produkt.img} dodajProdukt={dodajProdukt} izbrisiProdukt={izbrisiProdukt}/>
                 ))}

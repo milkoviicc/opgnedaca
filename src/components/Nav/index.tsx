@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const Nav = ({ storageLength }) => {
+const Nav = ({ storageLength }: {storageLength: number}) => {
   const [shouldScrollToContact, setShouldScrollToContact] = useState(false);
   const navigate = useNavigate();
   const [menuNav, setMenuNav] = useState(false);

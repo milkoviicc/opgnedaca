@@ -8,7 +8,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function registerUser(e: any) {
+  async function registerUser(e: React.FormEvent) {
     e.preventDefault();
 
     const response = await fetch('http://localhost:1337/api/register', {

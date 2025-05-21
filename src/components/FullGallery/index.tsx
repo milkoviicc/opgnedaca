@@ -1,4 +1,3 @@
-import React from "react";
 
 import image1 from '../../assets/image1.jpg';
 import image2 from '../../assets/image2.jpg';
@@ -50,10 +49,10 @@ const objects = [
 
 const FullGallery = () => {
     return (
-        <div className="container mx-auto py-24 flex flex-col justify-center">
-            <div className="my-4 grid grid-cols-3 gap-4">
+        <div className="container mx-auto py-24 flex flex-col justify-center items-center">
+            <div className="my-4 grid md:grid-cols-3 şm:grid-cols-2 grid-cols-1 gap-4">
                 {objects.map(obj => (
-                    <img src={obj.img} className=" w-[475px] h-[300px] object-cover hover:opacity-70 duration-200" />
+                    <img src={obj.img} className="w-[300px] sm:w-[460px] h-[300px] object-cover hover:opacity-70 duration-200 rounded-md" />
                 ))}
             </div>
         </div>

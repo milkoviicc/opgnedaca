@@ -7,7 +7,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const history = useNavigate();
 
-  async function loginUser(e: any) {
+  async function loginUser(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const response = await fetch('http://localhost:1337/api/login', {
