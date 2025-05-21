@@ -42,7 +42,7 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
                     <Route path="/produkti" element={<Products refreshStorage={refreshStorage} />} />
                     <Route path="/gallery" element={<FullGallery />} />
-                    <Route path="/cart" element={<Cart refreshStorage={refreshStorage} kilaza={0} />} />
+                    <Route path="/cart" element={<Cart refreshStorage={refreshStorage} />} />
                     <Route path="/checkout" element={<Checkout />}/>
                 </Routes>
             </BrowserRouter>

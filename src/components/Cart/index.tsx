@@ -3,12 +3,20 @@ import drvo from '../../assets/drvo.png';
 import {Link} from 'react-router-dom';
 import Footer from "../Footer";
 
+interface CartItemValue {
+    img: string;
+    cijena: number;
+    kilaza: number;
+    izracunataCijena: number;
+    // Add other properties as needed
+}
+
 interface MyObject {
     key: string;
-    value: Record<string, any>; // Value is now an object
-  }
+    value: CartItemValue;
+}
 
-const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: number}) => {
+const Cart = ({refreshStorage}: {refreshStorage: () => void}) => {
     
     const [localStorageItems, setLocalStorageItems] = useState<MyObject[]>([]);
 
@@ -111,7 +119,7 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
     };
 
     function getDate(state: string) {
-        var currentDate = new Date();
+        const currentDate = new Date();
 
         if(state == "standard") {
             currentDate.setDate(currentDate.getDate() + 7);
@@ -127,9 +135,9 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
     }
 
     function getSubtotal() {
-        var finalnaCijena: number = 0;
+        let finalnaCijena: number = 0;
         localStorageItems.map((item) => {
-            var cijena = item.value.kilaza * item.value.cijena;
+            const cijena = item.value.kilaza * item.value.cijena;
             finalnaCijena = finalnaCijena + cijena;
         })
         
@@ -141,7 +149,7 @@ const Cart = ({refreshStorage, kilaza}: {refreshStorage: Function, kilaza: numbe
     }
 
     function getTotalPrice (finalnaCijena: number, pdv: number, state: string) {
-        var cijena = finalnaCijena + pdv;
+        let cijena = finalnaCijena + pdv;
 
         if(state == "standard") {
             cijena = cijena + 5;
